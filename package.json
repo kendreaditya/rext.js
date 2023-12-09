@@ -1,0 +1,29 @@
+{
+  "name": "rext.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:client": "esbuild ./index.tsx --bundle --outfile=dist/client.js",
+    "build:tsc": "tsc",
+    "build:server": "esbuild ./server.tsx --platform=node --bundle --outfile=dist/server.js",
+    "build": "npm run build:client && npm run build:server && npm run build:tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "process": "^0.11.10",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "esbuild": "^0.19.8",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "jsdom": "^23.0.1",
+    "require": "^2.4.20",
+    "run-p": "^0.0.0"
+  }
+}
