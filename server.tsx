@@ -24,12 +24,11 @@ app.get('*', (req, res) => {
         </html>`);
 
     global.document = env.window.document;
-    globalThis.window = env.window;
+    global.window = env.window;
 
     render(<App path={req.path} />, document.getElementById("app"));
 
     res.send(document.documentElement.outerHTML);
-
 });
 
 app.listen(4000, () => {

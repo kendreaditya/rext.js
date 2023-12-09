@@ -9,7 +9,7 @@ const Breeds_1 = require("./Breeds");
 const Breed_1 = require("./Breed");
 const App = ({ path }) => {
     if (path === "/") {
-        return react_1.default.createElement(Breeds_1.Breeds, { document: document });
+        return react_1.default.createElement(Breeds_1.Breeds, null);
     }
     else if (path === "/breed") {
         return react_1.default.createElement(Breed_1.Breed, { path: path });

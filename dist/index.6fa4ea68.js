@@ -615,7 +615,7 @@ const render = (vdom, container)=>{
     if (typeof vdom !== "object") return container.appendChild(document.createTextNode(vdom));
     const renderedElement = document.createElement(vdom.tag);
     if (vdom.props) Object.keys(vdom.props).filter((key)=>key !== "children").forEach((name)=>renderedElement[name] = vdom.props[name]);
-    if (vdom.props.children) vdom.props.children.forEach((child)=>Array.isArray(child) ? child.forEach((c)=>render(c, renderedElement, document)) : render(child, renderedElement, document));
+    if (vdom.props.children) vdom.props.children.forEach((child)=>Array.isArray(child) ? child.forEach((c)=>render(c, renderedElement)) : render(child, renderedElement));
     container.appendChild(renderedElement);
 };
 const React = {
@@ -698,7 +698,6 @@ var _breeds = require("./Breeds");
 var _breed = require("./Breed");
 const App = ({ path })=>{
     if (path === "/") return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _breeds.Breeds), {
-        document: document,
         __source: {
             fileName: "App.tsx",
             lineNumber: 8,
@@ -777,13 +776,14 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Breed", ()=>Breed);
 var _react = require("./react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const Breed = (path)=>{
+const Breed = ({ path })=>{
     const [breed, setBreed] = (0, _react.useState)("", "breed");
     const [image, setImage] = (0, _react.useState)("", "image");
     const [loading, setLoading] = (0, _react.useState)(false, "loading");
     if (!loading) {
         const params = new URLSearchParams(path);
         const b = params.get("b");
+        console.log(b);
         if (b) fetch(`https://dog.ceo/api/breed/${b}/images/random`).then((response)=>response.json()).then((data)=>{
             setBreed(b, Breed);
             setImage(data.message, Breed);
@@ -792,7 +792,7 @@ const Breed = (path)=>{
         return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
             __source: {
                 fileName: "Breed.tsx",
-                lineNumber: 22,
+                lineNumber: 23,
                 columnNumber: 12
             },
             __self: undefined
@@ -800,7 +800,7 @@ const Breed = (path)=>{
     } else return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "Breed.tsx",
-            lineNumber: 25,
+            lineNumber: 26,
             columnNumber: 5
         },
         __self: undefined
@@ -808,14 +808,14 @@ const Breed = (path)=>{
         href: "/",
         __source: {
             fileName: "Breed.tsx",
-            lineNumber: 26,
+            lineNumber: 27,
             columnNumber: 7
         },
         __self: undefined
     }, "Go Back"), /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         __source: {
             fileName: "Breed.tsx",
-            lineNumber: 27,
+            lineNumber: 28,
             columnNumber: 7
         },
         __self: undefined
@@ -825,7 +825,7 @@ const Breed = (path)=>{
         alt: breed,
         __source: {
             fileName: "Breed.tsx",
-            lineNumber: 28,
+            lineNumber: 29,
             columnNumber: 7
         },
         __self: undefined

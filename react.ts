@@ -14,7 +14,7 @@ export const render = (vdom, container) => {
     }
 
     if (vdom.props.children) {
-        vdom.props.children.forEach(child => (Array.isArray(child)) ? child.forEach(c => render(c, renderedElement, document)) : render(child, renderedElement, document));
+        vdom.props.children.forEach(child => (Array.isArray(child)) ? child.forEach(c => render(c, renderedElement)) : render(child, renderedElement));
     }
 
     container.appendChild(renderedElement);

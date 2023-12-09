@@ -1,6 +1,6 @@
 import React, { useState } from "./react";
 
-export const Breed = (path) => {
+export const Breed = ({path}) => {
   const [breed, setBreed] = useState("", "breed");
   const [image, setImage] = useState("", "image");
   const [loading, setLoading] = useState(false, "loading");
@@ -8,6 +8,7 @@ export const Breed = (path) => {
   if (!loading) {
     const params = new URLSearchParams(path);
     const b = params.get("b");
+    console.log(b);
 
     if (b) {
       fetch(`https://dog.ceo/api/breed/${b}/images/random`)

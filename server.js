@@ -46,7 +46,7 @@ app.get('*', (req, res) => {
             </body>
         </html>`);
     global.document = env.window.document;
-    globalThis.window = env.window;
+    global.window = env.window;
     (0, react_1.render)(react_1.default.createElement(App_1.App, { path: req.path }), document.getElementById("app"));
     res.send(document.documentElement.outerHTML);
 });

@@ -25,13 +25,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Breed = void 0;
 const react_1 = __importStar(require("./react"));
-const Breed = (path) => {
+const Breed = ({ path }) => {
     const [breed, setBreed] = (0, react_1.useState)("", "breed");
     const [image, setImage] = (0, react_1.useState)("", "image");
     const [loading, setLoading] = (0, react_1.useState)(false, "loading");
     if (!loading) {
         const params = new URLSearchParams(path);
         const b = params.get("b");
+        console.log(b);
         if (b) {
             fetch(`https://dog.ceo/api/breed/${b}/images/random`)
                 .then((response) => response.json())

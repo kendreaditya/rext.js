@@ -13,7 +13,7 @@ const render = (vdom, container) => {
             .forEach(name => renderedElement[name] = vdom.props[name]);
     }
     if (vdom.props.children) {
-        vdom.props.children.forEach(child => (Array.isArray(child)) ? child.forEach(c => (0, exports.render)(c, renderedElement, document)) : (0, exports.render)(child, renderedElement, document));
+        vdom.props.children.forEach(child => (Array.isArray(child)) ? child.forEach(c => (0, exports.render)(c, renderedElement)) : (0, exports.render)(child, renderedElement));
     }
     container.appendChild(renderedElement);
 };

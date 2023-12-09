@@ -9,7 +9,7 @@
       Object.keys(vdom.props).filter((key) => key !== "children").forEach((name) => renderedElement[name] = vdom.props[name]);
     }
     if (vdom.props.children) {
-      vdom.props.children.forEach((child) => Array.isArray(child) ? child.forEach((c) => render(c, renderedElement, document)) : render(child, renderedElement, document));
+      vdom.props.children.forEach((child) => Array.isArray(child) ? child.forEach((c) => render(c, renderedElement)) : render(child, renderedElement));
     }
     container.appendChild(renderedElement);
   };
@@ -47,13 +47,14 @@
   };
 
   // Breed.tsx
-  var Breed = (path) => {
+  var Breed = ({ path }) => {
     const [breed, setBreed] = useState("", "breed");
     const [image, setImage] = useState("", "image");
     const [loading, setLoading] = useState(false, "loading");
     if (!loading) {
       const params = new URLSearchParams(path);
       const b = params.get("b");
+      console.log(b);
       if (b) {
         fetch(`https://dog.ceo/api/breed/${b}/images/random`).then((response) => response.json()).then((data) => {
           setBreed(b, Breed);
@@ -70,7 +71,7 @@
   // App.tsx
   var App = ({ path }) => {
     if (path === "/") {
-      return /* @__PURE__ */ react_default.createElement(Breeds, { document });
+      return /* @__PURE__ */ react_default.createElement(Breeds, null);
     } else if (path === "/breed") {
       return /* @__PURE__ */ react_default.createElement(Breed, { path });
     }
